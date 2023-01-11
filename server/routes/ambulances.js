@@ -14,7 +14,9 @@ router.use(function (req, res, next) {
 });
 
 router.get("/", async (req, res) => {
-  const ambulances = await Ambulance.find().sort("cost_per_hour");
+  const ambulances = await Ambulance.find({ availability: true }).sort(
+    "cost_per_hour"
+  );
   res.send(ambulances);
 });
 

@@ -36,19 +36,23 @@ class Ambulances extends Component {
   render() {
     if (this.state.ambulances.length === 0)
       return (
-        <h4 className="text">
-          There are currently no ambulance available to request for service
-        </h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">
+            There are currently no ambulance available to request for service
+          </h4>
+        </div>
       );
 
     const ambulances = this.getAmbulances();
 
     return (
       <React.Fragment>
-        <h4 className="text">
-          There are currently {this.state.ambulances.length} ambulances
-          available to request for service
-        </h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">
+            There are currently {this.state.ambulances.length} ambulances
+            available to request for service
+          </h4>
+        </div>
 
         <SearchBox
           value={this.state.searchQuery}
@@ -56,7 +60,7 @@ class Ambulances extends Component {
           label={"Search By Type..."}
         />
 
-        <table className="table">
+        <table className="table table-success table-striped">
           <thead>
             <tr>
               <th>Ambulance Name</th>
@@ -78,12 +82,13 @@ class Ambulances extends Component {
                   </Link>
                 </td>
                 <td>
-                  <button
-                    onClick={this.makeRequest}
-                    className="btn btn-warning btn-sm"
-                  >
-                    Request For Service
-                  </button>
+                  {this.props.user && (
+                    <Link to={`/ambulancerequest/${ambulance._id}`}>
+                      <button className="btn btn-warning btn-sm">
+                        Request For Service
+                      </button>
+                    </Link>
+                  )}
                 </td>
               </tr>
             ))}

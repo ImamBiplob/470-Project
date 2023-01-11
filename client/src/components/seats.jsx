@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import SearchBox from "./common/searchBox";
 
 class Seats extends Component {
@@ -32,15 +33,21 @@ class Seats extends Component {
 
   render() {
     if (this.state.seats.length === 0)
-      return <h4 className="text">There are currently no seat available</h4>;
+      return (
+        <div className="text-bg-info p-3">
+          <h4 className="text">There are currently no seat available</h4>
+        </div>
+      );
 
     const seats = this.getSeats();
 
     return (
       <React.Fragment>
-        <h4 className="text">
-          There are currently {this.state.seats.length} seats available
-        </h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">
+            There are currently {this.state.seats.length} seats available
+          </h4>
+        </div>
 
         <SearchBox
           value={this.state.searchQuery}
@@ -48,7 +55,7 @@ class Seats extends Component {
           label={"Search By Type..."}
         />
 
-        <table className="table">
+        <table className="table table-success table-striped">
           <thead>
             <tr>
               <th>Seat's Number</th>
@@ -65,12 +72,13 @@ class Seats extends Component {
                 <td>{seat.cost}</td>
 
                 <td>
-                  <button
-                    onClick={this.makeAppointment}
-                    className="btn btn-warning btn-sm"
-                  >
-                    Request for Booking Seat
-                  </button>
+                  {this.props.user && (
+                    <Link to={`/seatbooking/${seat._id}`}>
+                      <button className="btn btn-warning btn-sm">
+                        Request for Booking Seat
+                      </button>
+                    </Link>
+                  )}
                 </td>
               </tr>
             ))}

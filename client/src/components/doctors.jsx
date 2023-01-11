@@ -37,19 +37,23 @@ class Doctors extends Component {
   render() {
     if (this.state.doctors.length === 0)
       return (
-        <h4 className="text">
-          There are currently no doctor available to make appointment
-        </h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">
+            There are currently no doctor available to make appointment
+          </h4>
+        </div>
       );
 
     const doctors = this.getDoctors();
 
     return (
       <React.Fragment>
-        <h4 className="text">
-          There are currently {this.state.doctors.length} doctors available to
-          make appointment
-        </h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">
+            There are currently {this.state.doctors.length} doctors available to
+            make appointment
+          </h4>
+        </div>
 
         <SearchBox
           value={this.state.searchQuery}
@@ -57,7 +61,7 @@ class Doctors extends Component {
           label={"Search By Name..."}
         />
 
-        <table className="table">
+        <table className="table table-success table-striped">
           <thead>
             <tr>
               <th>Doctor's Name</th>
@@ -77,12 +81,13 @@ class Doctors extends Component {
                 <td>{doctor.sitting_time}</td>
                 <td>{doctor.qualifications}</td>
                 <td>
-                  <button
-                    onClick={this.makeAppointment}
-                    className="btn btn-warning btn-sm"
-                  >
-                    Make Appointment
-                  </button>
+                  {this.props.user && (
+                    <Link to={`/appointment/${doctor._id}`}>
+                      <button className="btn btn-warning btn-sm">
+                        Make Appointment
+                      </button>
+                    </Link>
+                  )}
                 </td>
               </tr>
             ))}

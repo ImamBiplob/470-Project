@@ -24,18 +24,19 @@ export default function DriverProfile() {
   if (driver) {
     return (
       <React.Fragment>
-        <table className="table">
+        <div className="text-bg-info p-3">
           <h4 className="text">Driver's Profile</h4>
-          <tr>
-            <td>Driver's ID:- {driver.id}</td>
-          </tr>
-          <tr>
-            <td>Driver's Name:- {driver.name}</td>
-          </tr>
-          <tr>
-            <td>Driver's Phone:- {driver.phone}</td>
-          </tr>
-        </table>
+        </div>
+
+        <tr>
+          <td>Driver's ID:- {driver.id}</td>
+        </tr>
+        <tr>
+          <td>Driver's Name:- {driver.name}</td>
+        </tr>
+        <tr>
+          <td>Driver's Phone:- {driver.phone}</td>
+        </tr>
       </React.Fragment>
     );
   }

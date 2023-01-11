@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import jwtDecode from "jwt-decode";
 import NavBar from "./components/navbar";
+import SideBar from "./components/sidebar";
 import Doctors from "./components/doctors";
 import DoctorProfile from "./components/doctor-details";
 import Ambulances from "./components/ambulances";
@@ -13,10 +14,16 @@ import Medicines from "./components/medicines";
 import Home from "./components/home";
 import RegisterForm from "./components/common/registerForm";
 import LoginForm from "./components/common/loginForm";
+import AppointmentForm from "./components/forms/appointmentForm";
+import AmbulanceForm from "./components/forms/ambulanceForm";
+import BloodBookingForm from "./components/forms/bloodBookingForm";
+import SeatBookingForm from "./components/forms/seatBookingForm";
+import MedicineOrderForm from "./components/forms/medicineForm";
 import Logout from "./components/common/logout";
 import Footer from "./components/footer";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import UserProfile from "./components/user-profile";
 
 class App extends Component {
   state = {};
@@ -35,6 +42,7 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar user={this.state.user} />
+        <SideBar user={this.state.user} />
         <main className="container">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -42,13 +50,34 @@ class App extends Component {
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/doctors" element={<Doctors />} />
+            <Route
+              path="/user-profile"
+              element={<UserProfile user={this.state.user} />}
+            />
+            <Route
+              path="/doctors"
+              element={<Doctors user={this.state.user} />}
+            />
+            <Route path="/appointment/:id" element={<AppointmentForm />} />
             <Route path="/doctors/:id" element={<DoctorProfile />} />
-            <Route path="/ambulances/" element={<Ambulances />} />
+            <Route
+              path="/ambulances/"
+              element={<Ambulances user={this.state.user} />}
+            />
+            <Route path="/ambulancerequest/:id" element={<AmbulanceForm />} />
             <Route path="/drivers/:id" element={<DriverProfile />} />
-            <Route path="/blood-banks/" element={<BloodBanks />} />
-            <Route path="/seats/" element={<Seats />} />
-            <Route path="/medicines/" element={<Medicines />} />
+            <Route
+              path="/blood-banks/"
+              element={<BloodBanks user={this.state.user} />}
+            />
+            <Route path="/bloodrequest/:id" element={<BloodBookingForm />} />
+            <Route path="/seats/" element={<Seats user={this.state.user} />} />
+            <Route path="/seatbooking/:id" element={<SeatBookingForm />} />
+            <Route
+              path="/medicines/"
+              element={<Medicines user={this.state.user} />}
+            />
+            <Route path="/medicineorder/:id" element={<MedicineOrderForm />} />
           </Routes>
         </main>
         <Footer />

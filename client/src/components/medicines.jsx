@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import SearchBox from "./common/searchBox";
 
 class Medicines extends Component {
@@ -35,16 +36,21 @@ class Medicines extends Component {
   render() {
     if (this.state.medicines.length === 0)
       return (
-        <h4 className="text">There are currently no medicine available</h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">There are currently no medicine available</h4>
+        </div>
       );
 
     const medicines = this.getMedicines();
 
     return (
       <React.Fragment>
-        <h4 className="text">
-          There are currently {this.state.medicines.length} medicines available
-        </h4>
+        <div className="text-bg-info p-3">
+          <h4 className="text">
+            There are currently {this.state.medicines.length} medicines
+            available
+          </h4>
+        </div>
 
         <SearchBox
           value={this.state.searchQuery}
@@ -52,7 +58,7 @@ class Medicines extends Component {
           label={"Search By Name..."}
         />
 
-        <table className="table">
+        <table className="table table-success table-striped">
           <thead>
             <tr>
               <th>Medicine Name</th>
@@ -69,12 +75,13 @@ class Medicines extends Component {
                 <td>{medicine.stock}</td>
 
                 <td>
-                  <button
-                    onClick={this.makeAppointment}
-                    className="btn btn-warning btn-sm"
-                  >
-                    Order for Medicine
-                  </button>
+                  {this.props.user && (
+                    <Link to={`/medicineorder/${medicine._id}`}>
+                      <button className="btn btn-warning btn-sm">
+                        Order for Medicine
+                      </button>
+                    </Link>
+                  )}
                 </td>
               </tr>
             ))}

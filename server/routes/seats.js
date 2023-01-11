@@ -13,7 +13,7 @@ router.use(function (req, res, next) {
 });
 
 router.get("/", async (req, res) => {
-  const seats = await Seat.find().sort("cost");
+  const seats = await Seat.find({ availability: true }).sort("cost");
   res.send(seats);
 });
 

@@ -1,47 +1,56 @@
-const { User } = require('../models/user');
-const {Blood_bank} = require('../models/blood-bank');
-const {Blood_request, validate} = require('../models/blood-request');
-const express = require('express');
-const mongoose = require('mongoose');
+const { User } = require("../models/user");
+const { Blood_bank } = require("../models/blood-bank");
+const { Blood_request, validate } = require("../models/blood-request");
+const express = require("express");
+const mongoose = require("mongoose");
 //const Fawn = require('fawn');
 const router = express.Router();
 
 //Fawn.init(mongoose);
 
-router.get('/', async (req, res) => {
-    const blood_requests = await Blood_request.find().sort('-date');
-    res.send(blood_requests);
+router.use(function (req, res, next) {
+  res.header({ "Access-Control-Allow-Origin": "*" });
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
 });
 
-router.post('/', async (req, res) => {
-    const { error } = validate(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+router.get("/", async (req, res) => {
+  const blood_requests = await Blood_request.find().sort("-date");
+  res.send(blood_requests);
+});
 
-    const user = await User.findById(req.body.userId);
-    if (!user) return res.status(400).send('Invalid User');
+router.post("/", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
 
-    const blood_bank = await Blood_bank.findById(req.body.blood_bankId);
-    if (!blood_bank) return res.status(400).send('Invalid Blood Bank');
+  const user = await User.findById(req.body.userId);
+  if (!user) return res.status(400).send("Invalid User");
 
-    const blood_request = new Blood_request({
-        user: {
-            _id : user._id,
-            name: user.name,
-            phone: user.phone,
-            email: user.email
-        },
-        blood_bank: req.body.blood_bankId,
-        reqstd_bg: req.body.reqstd_bg,
-        reqstd_no_of_bags: req.body.reqstd_no_of_bags
-    });
+  const blood_bank = await Blood_bank.findById(req.body.blood_bankId);
+  if (!blood_bank) return res.status(400).send("Invalid Blood Bank");
 
-    await blood_request.save();
+  const blood_request = new Blood_request({
+    user: {
+      _id: user._id,
+      name: user.name,
+      phone: user.phone,
+      email: user.email,
+    },
+    blood_bank: req.body.blood_bankId,
+    reqstd_bg: req.body.reqstd_bg,
+    reqstd_no_of_bags: req.body.reqstd_no_of_bags,
+  });
 
-    blood_bank.no_of_bags -= req.body.reqstd_no_of_bags;
-    blood_bank.save();
+  await blood_request.save();
 
-    res.send(blood_request);
-    /*try {
+  blood_bank.no_of_bags -= req.body.reqstd_no_of_bags;
+  blood_bank.save();
+
+  res.send(blood_request);
+  /*try {
         new Fawn.Task()
             .save('blood-requests', blood_request)
             .update('blood-banks', {_id: blood_bank._id}, {
@@ -56,13 +65,15 @@ router.post('/', async (req, res) => {
     }*/
 });
 
-router.delete('/:id', async (req, res) => {
-    
-    const blood_request = await Blood_request.findByIdAndRemove(req.params.id);
+router.delete("/:id", async (req, res) => {
+  const blood_request = await Blood_request.findByIdAndRemove(req.params.id);
 
-    if(!blood_request) return res.status(404).send('The Blood Request with the given id not found');
+  if (!blood_request)
+    return res
+      .status(404)
+      .send("The Blood Request with the given id not found");
 
-    res.send(blood_request);
+  res.send(blood_request);
 });
 
 module.exports = router;

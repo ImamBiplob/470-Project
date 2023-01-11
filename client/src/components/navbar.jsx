@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const NavBar = ({ user }) => {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-dark bg-primary navbar-expand-lg ">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Medical
@@ -56,7 +56,7 @@ const NavBar = ({ user }) => {
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/register">
-                    Register Here
+                    Register
                   </NavLink>
                 </li>
               </React.Fragment>

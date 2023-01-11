@@ -9,6 +9,16 @@ body {
   padding: 0 0 0 0;
 }
 
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.card-body {
+  width: 200px;
+  height: 200px;
+}
+
 .navbar {
   margin-bottom: 25px;
 }
@@ -16,14 +26,15 @@ body {
 .text {
   text-align: center;
   text-decoration: rgb(51, 178, 28);
-  background-color: aquamarine;
   text-decoration-color: blue;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-top: 0;
 }
 
 .home-title {
-  background-color: rgba(10, 217, 217, 0.873);
+  
   text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .table {

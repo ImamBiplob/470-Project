@@ -1,4 +1,4 @@
-const authorize = require("../middleware/authorize");
+//const authorize = require("../middleware/authorize");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { User, validate } = require("../models/user");
@@ -15,20 +15,30 @@ router.use(function (req, res, next) {
   next();
 });
 
-router.get("/", authorize, async (req, res) => {
+router.get("/", async (req, res) => {
   const users = await User.find().sort("name");
   res.send(users);
 });
 
-router.get("/me", authorize, async (req, res) => {
+router.get("/:id", async (req, res) => {
   //find user on db
-  const user = await User.findById(req.user._id).select("-password");
+  const user = await User.findById(req.params.id).select("-password");
   //if not found, show error 404
   if (!user)
     return res.status(404).send("The user with the given id not found");
   //show user info
   res.send(user);
 });
+
+//router.get("/me", authorize, async (req, res) => {
+//find user on db
+///const user = await User.findById(req.user._id).select("-password");
+//if not found, show error 404
+//if (!user)
+//  return res.status(404).send("The user with the given id not found");
+//show user info
+//res.send(user);
+//});
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);

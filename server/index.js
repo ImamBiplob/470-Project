@@ -13,6 +13,7 @@ const blood_requests = require("./routes/blood-requests");
 const seats = require("./routes/seats");
 const seat_bookings = require("./routes/seat-bookings");
 const medicines = require("./routes/medicines");
+const medicine_orders = require("./routes/medicine-orders");
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -40,6 +41,7 @@ app.use("/api/ambulance-requests", ambulance_requests);
 app.use("/api/seats", seats);
 app.use("/api/seat-bookings", seat_bookings);
 app.use("/api/medicines", medicines);
+app.use("/api/medicine-orders", medicine_orders);
 
 app.get("/", (req, res) => {
   res.send("Welcome Beta");

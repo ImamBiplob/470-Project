@@ -24,27 +24,19 @@ export default function DoctorProfile() {
   if (doctor) {
     return (
       <React.Fragment>
-        <table className="table">
+        <div className="text-bg-info p-3">
           <h4 className="text">Doctor's Profile</h4>
-          <tr>
-            <th>Doctor's ID:- {doctor.id}</th>
-          </tr>
-          <tr>
-            <th>Doctor's Name:- {doctor.name}</th>
-          </tr>
-          <tr>
-            <th>Doctor's Email:- {doctor.email}</th>
-          </tr>
-          <tr>
-            <th>Sitting Time:- {doctor.sitting_time}</th>
-          </tr>
-          <tr>
-            <th>Qualifications:- {doctor.qualifications}</th>
-          </tr>
-          <tr>
-            <th>Availability:- {doctor.availability}</th>
-          </tr>
-        </table>
+        </div>
+
+        <p>Doctor's ID:- {doctor.id}</p>
+
+        <p>Doctor's Name:- {doctor.name}</p>
+
+        <p>Doctor's Email:- {doctor.email}</p>
+
+        <p>Sitting Time:- {doctor.sitting_time}</p>
+
+        <p>Qualifications:- {doctor.qualifications}</p>
       </React.Fragment>
     );
   }
