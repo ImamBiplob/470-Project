@@ -10,16 +10,16 @@ import Medicines from "./medicines";
 const Home = () => {
   return (
     <React.Fragment>
-      <div className="text-bg-info p-3">
+      <div className="text-bg-info p-3 shadow my-2 rounded-2">
         <h2 className="home-title">
           All Your Medical Supports Are In One Place, Just A Few Clicks Away
         </h2>
       </div>
-      <table className="table ">
+      <table className="table">
         <thead>
           <tr>
             <th>
-              <div className="card">
+              <div className="card shadow">
                 <img src={doctor} className="card-img-top" alt="..." />
 
                 <div className="card-body">
@@ -35,7 +35,7 @@ const Home = () => {
               </div>
             </th>
             <th>
-              <div className="card">
+              <div className="card shadow">
                 <img src={bloodbank} className="card-img-top" alt="..." />
 
                 <div className="card-body">
@@ -51,7 +51,7 @@ const Home = () => {
               </div>
             </th>
             <th>
-              <div className="card">
+              <div className="card shadow">
                 <img src={ambulance} className="card-img-top" alt="..." />
 
                 <div className="card-body">
@@ -67,7 +67,7 @@ const Home = () => {
               </div>
             </th>
             <th>
-              <div className="card">
+              <div className="card shadow">
                 <img src={seat} className="card-img-top" alt="..." />
 
                 <div className="card-body">
@@ -83,7 +83,7 @@ const Home = () => {
               </div>
             </th>
             <th>
-              <div className="card">
+              <div className="card shadow">
                 <img src={medicine} className="card-img-top" alt="..." />
 
                 <div className="card-body">

@@ -13,7 +13,7 @@ class UserProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 my-2 shadow rounded">
           <h4 className="text">User Profile</h4>
         </div>
         <p className="text">User Name: {this.state.user.name}</p>

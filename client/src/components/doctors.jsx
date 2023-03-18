@@ -37,7 +37,7 @@ class Doctors extends Component {
   render() {
     if (this.state.doctors.length === 0)
       return (
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">
             There are currently no doctor available to make appointment
           </h4>
@@ -48,7 +48,7 @@ class Doctors extends Component {
 
     return (
       <React.Fragment>
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">
             There are currently {this.state.doctors.length} doctors available to
             make appointment
@@ -61,7 +61,7 @@ class Doctors extends Component {
           label={"Search By Name..."}
         />
 
-        <table className="table table-success table-striped">
+        <table className="table table-success table-striped shadow table-hover">
           <thead>
             <tr>
               <th>Doctor's Name</th>

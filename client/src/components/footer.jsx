@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="py-3 my-4">
+    <footer className="py-3 shadow-lg bg-gradient">
       <ul className="nav justify-content-center border-bottom pb-3 mb-3">
         <li className="nav-item">
           <NavLink to="/" className="nav-link px-2 text-muted">

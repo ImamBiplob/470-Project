@@ -38,7 +38,7 @@ class BloodBanks extends Component {
   render() {
     if (this.state.blood_banks.length === 0)
       return (
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">There are currently no blood-bank available</h4>
         </div>
       );
@@ -47,7 +47,7 @@ class BloodBanks extends Component {
 
     return (
       <React.Fragment>
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">
             There are currently {this.state.blood_banks.length} blood-banks
             available
@@ -60,7 +60,7 @@ class BloodBanks extends Component {
           label={"Search By Blood Group..."}
         />
 
-        <table className="table table-success table-striped">
+        <table className="table table-success table-striped shadow table-hover">
           <thead>
             <tr>
               <th>Blood-Bank's ID</th>

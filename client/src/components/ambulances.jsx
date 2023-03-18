@@ -36,7 +36,7 @@ class Ambulances extends Component {
   render() {
     if (this.state.ambulances.length === 0)
       return (
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">
             There are currently no ambulance available to request for service
           </h4>
@@ -47,7 +47,7 @@ class Ambulances extends Component {
 
     return (
       <React.Fragment>
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">
             There are currently {this.state.ambulances.length} ambulances
             available to request for service
@@ -60,7 +60,7 @@ class Ambulances extends Component {
           label={"Search By Type..."}
         />
 
-        <table className="table table-success table-striped">
+        <table className="table table-success table-striped shadow table-hover">
           <thead>
             <tr>
               <th>Ambulance Name</th>

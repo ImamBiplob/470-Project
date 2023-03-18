@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const NavBar = ({ user }) => {
   return (
-    <nav className="navbar navbar-dark bg-primary navbar-expand-lg ">
+    <nav className="navbar navbar-dark bg-primary navbar-expand-lg bg-gradient shadow">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Medical

@@ -39,11 +39,11 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="bg-info bg-gradient">
         <ToastContainer />
         <NavBar user={this.state.user} />
         <SideBar user={this.state.user} />
-        <main className="container">
+        <main className="container min-vh-100">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/navigate" element={<Navigate to="/" />} />
@@ -81,7 +81,7 @@ class App extends Component {
           </Routes>
         </main>
         <Footer />
-      </React.Fragment>
+      </div>
     );
   }
 }

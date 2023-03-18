@@ -34,7 +34,7 @@ class Seats extends Component {
   render() {
     if (this.state.seats.length === 0)
       return (
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">There are currently no seat available</h4>
         </div>
       );
@@ -43,7 +43,7 @@ class Seats extends Component {
 
     return (
       <React.Fragment>
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow rounded">
           <h4 className="text">
             There are currently {this.state.seats.length} seats available
           </h4>
@@ -55,7 +55,7 @@ class Seats extends Component {
           label={"Search By Type..."}
         />
 
-        <table className="table table-success table-striped">
+        <table className="table table-success table-striped shadow table-hover">
           <thead>
             <tr>
               <th>Seat's Number</th>

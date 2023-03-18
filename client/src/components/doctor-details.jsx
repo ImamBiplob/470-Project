@@ -24,7 +24,7 @@ export default function DoctorProfile() {
   if (doctor) {
     return (
       <React.Fragment>
-        <div className="text-bg-info p-3">
+        <div className="text-bg-info p-3 shadow my-2 rounded">
           <h4 className="text">Doctor's Profile</h4>
         </div>
 
