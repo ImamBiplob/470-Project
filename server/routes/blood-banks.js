@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
   res.send(blood_banks);
 });
 
-router.get("/search", async (req, res) => {
+/*router.get("/search", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -31,7 +31,7 @@ router.get("/search", async (req, res) => {
       .send("The blood-bank with the given blood group not found");
 
   res.send(blood_bank);
-});
+});*/
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
